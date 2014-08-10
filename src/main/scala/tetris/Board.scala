@@ -6,7 +6,6 @@ package tetris
 
 class Board(val rows: Int, val columns: Int) {
   val state = scala.collection.mutable.Map[(Int,Int),Block]()
-  val falling = scala.collection.mutable.Set[Block]()
 
   override def toString: String = {
     (1 to rows).map(r => {
@@ -14,30 +13,30 @@ class Board(val rows: Int, val columns: Int) {
     }).mkString("","\n","\n")
   }
 
-  def hasFalling: Boolean = falling.isEmpty
+  val falling = scala.collection.mutable.Set[Block]()
+  def hasFalling: Boolean = falling.nonEmpty
 
   def drop(block: Block) {
     if (hasFalling) throw new IllegalStateException("already falling")
     else {
-      falling.add(block)
-      state += (0,(columns+1)/2) -> block
+      falling += block
+      state += (1,(columns+1)/2) -> block
     }
   }
 
+  def coords(b: Block):Option[(Int,Int)] = state.filter(_._2 == b).map(_._1).headOption
+
+  def isAtBottomLine(b:Block): Boolean = coords(b).filter(_._1 == rows).isDefined
+  def optBlockBellow(b:Block):Option[Block] = coords(b).flatMap(c => state.get((c._1+1,c._2)))
+  def isOverFixedBlock(b:Block): Boolean = optBlockBellow(b).map(!falling.contains(_)).isDefined
+  def toBeFixedAtNextTick(b:Block): Boolean = isAtBottomLine(b) || isOverFixedBlock(b) || optBlockBellow(b).filter(toBeFixedAtNextTick(_)).isDefined
+
   def tick() {
-    (rows to 1).map(r => {
-      (1 to columns).map(c => {
-        state.get(r,c) match {
-          case Some(b) if falling.contains(b) => {
-            if (r == rows) falling.remove(b)
-            else state.get(r+1,c) match {
-              case Some(bb) if falling.contains(bb) => throw new IllegalStateException("falling bellow should have already been moved")
-              case Some(bb) if !falling.contains(bb) => falling.remove(b)
-              case None => {state.remove(r,c); state += (r+1,c)->b }
-            }
-          }
-          case _ =>
-        }
+    val tr = falling.filter(toBeFixedAtNextTick(_))
+    tr.foreach(falling.remove(_))
+    falling.foreach(fb => {
+      coords(fb).foreach( bc => {
+        state remove (bc._1, bc._2); state += (bc._1+1,bc._2)->fb
       })
     })
   }
@@ -45,6 +44,11 @@ class Board(val rows: Int, val columns: Int) {
 
 }
 
-case class Block(blocktype: Char) {
-  override def toString() = blocktype.toString
+class Block(repr: String) extends SimpleBlock(repr.head){
+  def this(ch: Char) = this(ch.toString)
+  override def toString() = repr
 }
+
+abstract class BlockIF
+
+class SimpleBlock(charRepr: Char)

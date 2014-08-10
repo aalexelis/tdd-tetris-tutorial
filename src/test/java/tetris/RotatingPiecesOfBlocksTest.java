@@ -21,6 +21,7 @@ public class RotatingPiecesOfBlocksTest extends Assert {
     // - Next step: RotatingTetrominoesTest
 
 
+
     private Piece piece;
 
 
@@ -60,7 +61,6 @@ public class RotatingPiecesOfBlocksTest extends Assert {
                     "...\n", piece.toString());
         }
     }
-
 
 
     public class A_piece_of_5x5_blocks {
