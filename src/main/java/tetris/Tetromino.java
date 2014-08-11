@@ -6,8 +6,7 @@ import static java.lang.System.out;
  * Created by andreas on 8/9/14.
  */
 
-public class Tetromino {
-    private Piece piece;
+public class Tetromino extends Piece {
     public static Tetromino I_SHAPE = new Tetromino(""+
             ".....\n" +
             ".....\n" +
@@ -39,21 +38,6 @@ public class Tetromino {
             ".ZZ\n"+
             "...\n");
 
-    private Tetromino(String repr) {
-        this.piece = new Piece(repr);
-    }
-
-    private Tetromino(Piece piece) {
-        this.piece = piece;
-    }
-
-    public Tetromino rotateRight() {
-        return new Tetromino(this.piece.rotateRight());
-    }
-    public Tetromino rotateLeft() {
-        return new Tetromino(this.piece.rotateLeft());
-    }
-    public String toString() {
-        return piece.toString();
+    private Tetromino(String repr) { super(repr);
     }
 }
