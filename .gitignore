@@ -5,6 +5,7 @@
 .classpath
 .project
 .settings/
+.cache
 
 /tdd-tetris-tutorial.iml
 .idea/
