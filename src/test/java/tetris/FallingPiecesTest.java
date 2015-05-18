@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Esko Luontola
  */
+@Ignore("contains no test")
 @RunWith(NestedJUnit.class)
 public class FallingPiecesTest extends Assert {
 
@@ -19,6 +20,7 @@ public class FallingPiecesTest extends Assert {
     // - See the README for how to proceed with this refactoring in safe steps
     // - Next step: MovingAFallingPieceTest
 
+/*
     private final Board board = new Board(6, 8);
 
 
@@ -40,6 +42,7 @@ public class FallingPiecesTest extends Assert {
                     "........\n", board.toString());
         }
     }
+*/
 
 /*
     public class When_a_piece_reaches_the_bottom {

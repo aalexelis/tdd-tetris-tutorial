@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 /**
  * @author Esko Luontola
  */
-
+@Ignore("contains no test") // TODO: uncomment me when you start doing these tests
 @RunWith(NestedJUnit.class)
 public class RotatingPiecesOfBlocksTest extends Assert {
 
@@ -20,8 +20,7 @@ public class RotatingPiecesOfBlocksTest extends Assert {
     // - See README for motivation
     // - Next step: RotatingTetrominoesTest
 
-
-
+/*
     private Piece piece;
 
 
@@ -43,26 +42,27 @@ public class RotatingPiecesOfBlocksTest extends Assert {
                     "...\n", piece.toString());
         }
 
-        @Test
-        public void can_be_rotated_right() {
-            piece = piece.rotateRight();
-            assertEquals("" +
-                    "...\n" +
-                    ".XX\n" +
-                    "...\n", piece.toString());
-        }
+//        @Test
+//        public void can_be_rotated_right() {
+//            piece = piece.rotateRight();
+//            assertEquals("" +
+//                    "...\n" +
+//                    ".XX\n" +
+//                    "...\n", piece.toString());
+//        }
 
-        @Test
-        public void can_be_rotated_left() {
-            piece = piece.rotateLeft();
-            assertEquals("" +
-                    "...\n" +
-                    "XX.\n" +
-                    "...\n", piece.toString());
-        }
+//        @Test
+//        public void can_be_rotated_left() {
+//            piece = piece.rotateLeft();
+//            assertEquals("" +
+//                    "...\n" +
+//                    "XX.\n" +
+//                    "...\n", piece.toString());
+//        }
     }
+*/
 
-
+/*
     public class A_piece_of_5x5_blocks {
 
         @Before
@@ -85,27 +85,27 @@ public class RotatingPiecesOfBlocksTest extends Assert {
                     ".....\n", piece.toString());
         }
 
-        @Test
-        public void can_be_rotated_right() {
-            piece = piece.rotateRight();
-            assertEquals("" +
-                    ".....\n" +
-                    ".....\n" +
-                    "..XXX\n" +
-                    "...XX\n" +
-                    "....X\n", piece.toString());
-        }
+//        @Test
+//        public void can_be_rotated_right() {
+//            piece = piece.rotateRight();
+//            assertEquals("" +
+//                    ".....\n" +
+//                    ".....\n" +
+//                    "..XXX\n" +
+//                    "...XX\n" +
+//                    "....X\n", piece.toString());
+//        }
 
-        @Test
-        public void can_be_rotated_left() {
-            piece = piece.rotateLeft();
-            assertEquals("" +
-                    "X....\n" +
-                    "XX...\n" +
-                    "XXX..\n" +
-                    ".....\n" +
-                    ".....\n", piece.toString());
-        }
+//        @Test
+//        public void can_be_rotated_left() {
+//            piece = piece.rotateLeft();
+//            assertEquals("" +
+//                    "X....\n" +
+//                    "XX...\n" +
+//                    "XXX..\n" +
+//                    ".....\n" +
+//                    ".....\n", piece.toString());
+//        }
     }
-
+*/
 }
