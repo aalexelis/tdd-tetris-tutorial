@@ -1,3 +1,10 @@
 /*.iws
 /target/
 /*/target/
+
+.classpath
+.project
+.settings/
+
+/tdd-tetris-tutorial.iml
+.idea/
